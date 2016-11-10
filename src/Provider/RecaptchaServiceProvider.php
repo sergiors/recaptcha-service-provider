@@ -28,7 +28,7 @@ final class RecaptchaServiceProvider implements ServiceProviderInterface
 
         $app['twig.loader.filesystem'] = $app->extend('twig.loader.filesystem',
             function (\Twig_Loader_Filesystem $loader) {
-                $loader->addPath(__DIR__.'/../../Resources/views/Form');
+                $loader->addPath(__DIR__.'/../Resources/views');
                 return $loader;
             }
         );
