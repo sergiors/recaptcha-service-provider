@@ -38,10 +38,9 @@ final class RecaptchaValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        $req = $this->requestStack->getCurrentRequest();
-
-        $remoteIp = $req->getClientIp();
-        $recaptchaToken = $req->get('g-recaptcha-response');
+        $request = $this->requestStack->getCurrentRequest();
+        $remoteIp = $request->getClientIp();
+        $recaptchaToken = $request->get('g-recaptcha-response');
 
         if ($this->recaptcha->verify($recaptchaToken, $remoteIp)->isSuccess()) {
             return;

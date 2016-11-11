@@ -20,6 +20,12 @@ final class RecaptchaServiceProvider implements ServiceProviderInterface
             );
         }
 
+        if (!isset($app['validator'])) {
+            throw new \LogicException(
+                'You must register the ValidatorServiceProvider to use the RecaptchaServiceProvider.'
+            );
+        }
+
         if (!isset($app['form.types'])) {
             throw new \LogicException(
                 'You must register the FormServiceProvider to use the RecaptchaServiceProvider.'
